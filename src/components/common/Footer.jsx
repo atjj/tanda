@@ -34,7 +34,7 @@ const  Footer = () => {
                             <h3 className = "font-bold">
                                 {item.title}
                             </h3>
-                            {item.links.map(({title},index) => <a key = {index} className="block">{title}</a>)}     
+                            {item.links.map(({title},index) => <a key = {index} className="block text-[var(--color-black-thin)]">{title}</a>)}     
                     </div>
                 )
             })}

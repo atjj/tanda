@@ -13,4 +13,10 @@
     --color-blue: #1E90FF;
     --color-white: #FFFFFF;
     --color-gray: #757575;
+    --color-gray-light: #999999;
+    --color-gray-lighter: #F5F5F5;
+    --color-black-thin: #3B3B3B;
+    --color-blue-thin: #E9F4FF;
+
+    --color-dark: #000000;
 }
