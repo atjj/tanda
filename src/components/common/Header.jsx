@@ -13,25 +13,27 @@ const  Header = () => {
     <header className="flex justify-between items-center mt-[43px] ">
 
         <div>
-            <img
-                src = {mainLogo}
-                alt = "logo"
-                />
+            <a href = '#'>
+                <img
+                    src = {mainLogo}
+                    alt = "logo"
+                    />
+            </a>
         </div>
 
         <nav className='py-[6px]'>
             <ul className = "flex items-center gap-[20px]">
                 <li>
-                    <img src = {searchIcon}/>
+                    <a href = '#' ><img src = {searchIcon}/></a>
                 </li>
                 <li>
-                    <img src = {accountIcon}/>
+                    <a href = '#' ><img src = {accountIcon}/></a>
                 </li>
                 <li>
-                    <img src = {cartIcon}/>
+                    <a href = '#' ><img src = {cartIcon}/></a>
                 </li>
                 <li>
-                    <img src = {burger}/>
+                   <a href = '#' ><img src = {burger}/></a>
                 </li>
             </ul>
         </nav>

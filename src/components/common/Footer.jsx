@@ -1,5 +1,5 @@
-import {Button} from "@nextui-org/react";
-
+/* import {Button} from "@nextui-org/react";
+ */
 
 import { footerLinks } from "../../constants"
 import logo from '../../assets/LOGO.svg';
@@ -11,7 +11,7 @@ import whatsapp from '../../assets/icons/whatsappIcon.svg';
 
 const  Footer = () => {
   return (
-    <footer>
+    <footer className="mt-[100px]">
 
         <div className="w-[107px] h-[28px]">
             <img
@@ -22,8 +22,8 @@ const  Footer = () => {
 
 
         <div className="flex gap-[16px] mt-[16px]">
-            <img src = {insta} alt = "instagram"/>
-            <img src = {whatsapp} alt = "whatsapp"/>
+            <a href = "#" ><img src = {insta} alt = "instagram"/></a>
+            <a href = "#" ><img src = {whatsapp} alt = "whatsapp"/></a>
         </div>
 
 
@@ -34,7 +34,7 @@ const  Footer = () => {
                             <h3 className = "font-bold">
                                 {item.title}
                             </h3>
-                            {item.links.map(({title},index) => <a key = {index} className="block text-[var(--color-black-thin)]">{title}</a>)}     
+                            {item.links.map(({title},index) => <a key = {index} className="cursor-pointer block text-[var(--color-black-thin)]">{title}</a>)}     
                     </div>
                 )
             })}

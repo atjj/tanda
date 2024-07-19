@@ -1,13 +1,14 @@
 import loader from '../assets/loader.svg';
 import startIcon from '../assets/icons/Star.svg';
 import points from '../assets/icons/points.svg';
-import { Button } from '@nextui-org/react';
 import StarRating from './StarRating';
 import { SwiperSlide,Swiper } from 'swiper/react';
-import {Card, CardBody} from "@nextui-org/react";
-
+import {Card, CardBody,Image,Button,CardHeader} from "@nextui-org/react";
 
 import 'swiper/css';
+
+import productsCard from '../json/card.json';
+import reviews from '../json/reviews.json';
 
 const  Details = () => {
 
@@ -69,90 +70,29 @@ const  Details = () => {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    <SwiperSlide>
-                        <Card className='bg-[var(--color-gray-lighter)] w-[259px] rounded-[16px] shadow-none' >
-                            <CardBody className='p-[12px]'>
-                                <div className='flex'>
-                                    <div className='flex gap-[8px]  items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
-                                            <img src = {""}/>
+                    {reviews.map(({image,name,date,time,comment},index) =>
+                        <SwiperSlide key = {index}>
+                            <Card className='bg-[var(--color-gray-lighter)] w-[259px] rounded-[16px] shadow-none' >
+                                <CardBody className='p-[12px]'>
+                                    <div className='flex'>
+                                        <div className='flex gap-[8px]  items-center'>
+                                            <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
+                                                <img src = {image}/>
+                                            </div>
+                                            <div>
+                                                <p className='font-semibold'>{name}</p>
+                                                <p className='text-[12px] text-[var(--color-gray)]'>{`${date}, ${time}`}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className='font-semibold'>Сайкал</p>
-                                            <p className='text-[12px] text-[var(--color-gray)]'>17 мая 2023, 20:46</p>
-                                        </div>
+                                        <StarRating styles={`h-[16px] w-[16px]`}/>
                                     </div>
-                                    <StarRating styles={`h-[16px] w-[16px]`}/>
-                                </div>
-                                <div className='text-[12px] mt-[8px] leading-[14px]'>
-                                    Машинка пришла целая в заводской упаковки. Стирает мелкие вещи, полоскание в ней не очень понравилось и отжим слабый.По сути отжим в ней это просто кружение.
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Card className='bg-[var(--color-gray-lighter)] w-[259px] rounded-[16px] shadow-none' >
-                            <CardBody className='p-[12px]'>
-                                <div className='flex'>
-                                    <div className='flex gap-[8px]  items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
-                                            <img src = {""}/>
-                                        </div>
-                                        <div>
-                                            <p className='font-semibold'>Сайкал</p>
-                                            <p className='text-[12px] text-[var(--color-gray)]'>17 мая 2023, 20:46</p>
-                                        </div>
+                                    <div className='text-[12px] mt-[8px] leading-[14px]'>
+                                        {comment}
                                     </div>
-                                    <StarRating styles={`h-[16px] w-[16px]`}/>
-                                </div>
-                                <div className='text-[12px] mt-[8px] leading-[14px]'>
-                                    Машинка пришла целая в заводской упаковки. Стирает мелкие вещи, полоскание в ней не очень понравилось и отжим слабый.По сути отжим в ней это просто кружение.
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Card className='bg-[var(--color-gray-lighter)] w-[259px] rounded-[16px] shadow-none' >
-                            <CardBody className='p-[12px]'>
-                                <div className='flex'>
-                                    <div className='flex gap-[8px]  items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
-                                            <img src = {""}/>
-                                        </div>
-                                        <div>
-                                            <p className='font-semibold'>Сайкал</p>
-                                            <p className='text-[12px] text-[var(--color-gray)]'>17 мая 2023, 20:46</p>
-                                        </div>
-                                    </div>
-                                    <StarRating styles={`h-[16px] w-[16px]`}/>
-                                </div>
-                                <div className='text-[12px] mt-[8px] leading-[14px]'>
-                                    Машинка пришла целая в заводской упаковки. Стирает мелкие вещи, полоскание в ней не очень понравилось и отжим слабый.По сути отжим в ней это просто кружение.
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Card className='bg-[var(--color-gray-lighter)] w-[259px] rounded-[16px] shadow-none' >
-                            <CardBody className='p-[12px]'>
-                                <div className='flex'>
-                                    <div className='flex gap-[8px]  items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
-                                            <img src = {""}/>
-                                        </div>
-                                        <div>
-                                            <p className='font-semibold'>Сайкал</p>
-                                            <p className='text-[12px] text-[var(--color-gray)]'>17 мая 2023, 20:46</p>
-                                        </div>
-                                    </div>
-                                    <StarRating styles={`h-[16px] w-[16px]`}/>
-                                </div>
-                                <div className='text-[12px] mt-[8px] leading-[14px]'>
-                                    Машинка пришла целая в заводской упаковки. Стирает мелкие вещи, полоскание в ней не очень понравилось и отжим слабый.По сути отжим в ней это просто кружение.
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </SwiperSlide>     
+                                </CardBody>
+                            </Card>
+                        </SwiperSlide>
+                    )}
                 </Swiper>
 
                 <Button className = 'mt-[24px] h-[44px] w-full rounded-[16px] text-[14px] text-[var(--color-blue)] bg-[var(--color-blue-thin)] font-semibold	'>
@@ -162,18 +102,33 @@ const  Details = () => {
 
             <div className='mt-[50px]'>
                 <h3 className='text-[18px] font-semibold'>Похожие товары</h3>
-                <div className='mt-[16px]'>
 
-                <div className = "flex py-[20px] items-center w-[167px] justify-center rounded-[16px] bg-[#F5F5F5]">
-                            <img src= {loader} width={135} height={199}/>
-                        </div>
-                    <Card className='w-[167px]'>
-  
-                    <CardBody>
+                <div className='mt-[16px] flex flex-wrap gap-x-[16px] gap-y-[32px]'>
+                    {productsCard.map(({image,name,product_type,reviews,price},index) => 
+                        <Card key={index} className='w-[167px] shadow-none'>           
+                            <CardHeader className='bg-[var(--color-gray-lighter)] h-[215px] rounded-[8px] flex items-center justify-center'>
+                                <Image
+                                    alt = "product"
+                                    className = "object-cover"
+                                    src = {image}
+                                    width={135}
+                                    />
+                            </CardHeader>
+                            <CardBody className='mt-[9px] p-[0px]'>
 
-                    </CardBody>
-                    </Card>
+                                <p className='font-semibold text-[14px]'>{name}</p>
+                                <p className='mt-[9px] text-[var(--color-gray)] text-[14px]'>{product_type}</p>
+                                <p className='mt-[9px] flex text-[14px] gap-[4px] items-center'>
+                                    <StarRating styles = {"h-[16px] w-[16px]"}/>
+                                    <span>{reviews} отзывов</span>
+                                </p>
+                                <p className='font-semibold mt-[9px]'>{price} сом</p>
 
+                            </CardBody>
+                            <Button className='mt-[11px] bg-[var(--color-blue)] text-[14px] text-[var(--color-white)] font-semibold rounded-[16px]'>
+                                Купить сейчас
+                            </Button>      
+                        </Card>)}
                 </div>
 
             </div>
