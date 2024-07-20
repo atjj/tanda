@@ -20,3 +20,8 @@
 
     --color-dark: #000000;
 }
+
+
+.container {
+    @apply max-w-[350px] md:max-w-[628px] relative  mx-auto;
+}
