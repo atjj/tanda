@@ -122,7 +122,7 @@ const  Details = () => {
                                 <SwiperSlide key = {id} className='md:w-[88px] md:h-[123px]'>
                                     <Card className='md:bg-[var(--color-gray-lighter)] md:w-[88px] md:h-[123px] md:md:rounded-[4px] md:shadow-none md:flex md:items-center md:justify-center'>
                                         <Image
-                                            src= {url}
+                                            src= {url ? url : loader}
                                             width={66}
                                             height={94}
                                             />
@@ -312,7 +312,7 @@ const  Details = () => {
                             <CardHeader className='bg-[var(--color-gray-lighter)] h-[215px] md:h-[252px] xl:h-[369px] rounded-[8px] flex items-center justify-center'>
                                 <Image
                                     alt = "product"
-                                    src = {image}
+                                    src = {image? image : loader}
                                     className = "object-cover w-[135px] md:w-[164px] xl:w-[222px]"
                                     />                      
                             </CardHeader>
