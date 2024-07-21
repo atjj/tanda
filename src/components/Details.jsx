@@ -118,11 +118,11 @@ const  Details = () => {
                         onSlideChange = {() => console.log('slide change')}
                         onSwiper = {(swiper) => console.log(swiper)}
                         >
-                            {images.map(({id,url}) =>
+                            {images.map(({id}) =>
                                 <SwiperSlide key = {id} className='md:w-[88px] md:h-[123px]'>
                                     <Card className='md:bg-[var(--color-gray-lighter)] md:w-[88px] md:h-[123px] md:md:rounded-[4px] md:shadow-none md:flex md:items-center md:justify-center'>
                                         <Image
-                                            src= {url ? url : loader}
+                                            src= {loader}
                                             width={66}
                                             height={94}
                                             />
@@ -307,12 +307,12 @@ const  Details = () => {
                 <h3 className='text-[18px] md:text-[24px] font-semibold'>Похожие товары</h3>
 
                 <div className='mt-[16px] xl:mt-[24px] flex flex-wrap gap-x-[16px] gap-y-[32px] md:gap-x-[20px] md:gap-y-[40px] xl:gap-x-[20px] xl:gap-y-[24px]'>
-                    {productsCard.map(({image,name,product_type,reviews,price},index) => 
+                    {productsCard.map(({name,product_type,reviews,price},index) => 
                         <Card key = {index} className = 'w-[167px] md:w-[196px] xl:w-[285px] shadow-none'>           
                             <CardHeader className='bg-[var(--color-gray-lighter)] h-[215px] md:h-[252px] xl:h-[369px] rounded-[8px] flex items-center justify-center'>
                                 <Image
                                     alt = "product"
-                                    src = {image? image : loader}
+                                    src = {loader}
                                     className = "object-cover w-[135px] md:w-[164px] xl:w-[222px]"
                                     />                      
                             </CardHeader>
