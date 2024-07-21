@@ -29,13 +29,52 @@ import productsCard from '../json/card.json';
 import reviews from '../json/reviews.json';
 import images from '../json/images.json';
 
+import { useRef,useState,useEffect } from 'react';
+
 
 
 const  Details = () => {
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+   const [containerWidth, setContainerWidth] = useState(0);
+   const divBlock = useRef();
+
+   useEffect(() => {
+
+     updateWidth();
+     window.addEventListener('resize', updateWidth);
+     
+     return () => {
+       window.removeEventListener('resize', updateWidth);
+     };
+   }, []);
+ 
+
+   const updateWidth = () => {
+    if (divBlock.current) {
+      setContainerWidth(divBlock.current.getBoundingClientRect().width);
+    }
+  };
+
+  const countSpace = () => {
+   if(containerWidth == 350)
+       return 70;
+   else if(containerWidth == 628)
+       return -120;
+   else
+       return 70  
+    }
+   console.log(containerWidth);
+
+   const space = countSpace();
+   console.log("space:",space)
+
+
 
   return (
-    <div className = "container mt-[24px] md:mt-[17px]">
+    <div ref={divBlock} className = "container mt-[24px] md:mt-[17px]">
+
+        {/* <button onClick = {showDivWidth}>fff</button> */}
 
         <Breadcrumbs className='hidden md:block' separator="/" >
             <BreadcrumbItem>Главная</BreadcrumbItem>
@@ -48,10 +87,10 @@ const  Details = () => {
             <Swiper
                 className='hidden md:block md:m-[0px]'
                 direction='vertical'
-                spaceBetween={45}
-                slidesPerView={5.5}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                spaceBetween = {50}
+                slidesPerView = {5.5}
+                onSlideChange = {() => console.log('slide change')}
+                onSwiper = {(swiper) => console.log(swiper)}
                     >
                         {images.map(({id,url}) =>
                             <SwiperSlide key = {id} className='md:w-[88px] md:h-[123px]'>
@@ -96,11 +135,11 @@ const  Details = () => {
 
             <p onClick={onOpen} className='mt-[24px] underline cursor-pointer'>Смотреть характеристики</p>
 
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size = "full" hideCloseButton>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size='full' className='md:w-[600px] md:h-[90%]'  hideCloseButton>
                 <ModalContent className='p-[0px]'>
                     {(onClose) => (
                             <>
-                            <ModalHeader className="flex justify-between items-center px-[20px] pt-[54px] pb-[20px] border-b-1 border-[var( --color-gray-light)] text-[20px] font-semibold">
+                            <ModalHeader className="flex justify-between items-center px-[20px] md:px-[40px] pt-[54px] md:pt-[34px]  pb-[20px] md:pb-[26px] border-b-1 border-[var( --color-gray-light)] text-[20px] md:text-[24px] font-semibold">
                                  <p>Характеристики</p>
                                  <button className='border-none bg-[--color-white]  p-[0px]' onClick = {onClose}>
                                     <Image
@@ -108,17 +147,9 @@ const  Details = () => {
                                     />
                                  </button>
                             </ModalHeader>
-                            <ModalBody className='pt-[32px] pb-[129px] overflow-auto'>
-                                <div className='flex gap-[20px] '>
+                            <ModalBody className='pt-[32px] px-[20px] md:px-[40px] pb-[129px] md:pb-[289px] overflow-auto'>
+                                <div className='flex gap-[40px] md:gap-[140px] md:gap-[24px] md:text-[18px]'>
                                     <ul className='flex flex-col gap-[16px] text-[var(--color-gray)]'>
-                                        <li>Способ установки</li>
-                                        <li>Напряжение</li>
-                                        <li>Цвет</li>
-                                        <li>Материал</li>
-                                        <li>Способ установки</li>
-                                        <li>Напряжение</li>
-                                        <li>Цвет</li>
-                                        <li>Материал</li>
                                         <li>Способ установки</li>
                                         <li>Напряжение</li>
                                         <li>Цвет</li>
@@ -142,13 +173,13 @@ const  Details = () => {
 
 
                             </ModalBody>
-                            <ModalFooter className='px-[20px] py-[0px]'>
-                                <div className="sticky w-[100%] max-w-[100%] left-0 right-0 bottom-0  z-50  flex justify-between bg-[var(--color-white)] py-[16px] border-t-[1px]">
+                            <ModalFooter className='px-[20px] md:px-[125px] py-[0px] border-t-[1px]'>
+                                <div className="sticky w-[100%] max-w-[100%] left-0 right-0 bottom-0  z-50  flex justify-between items-center  bg-[var(--color-white)] py-[16px]">
                                     <div>
-                                        <p className="text-[var(--color-blue)] font-bold ">100000 сом</p>
-                                        <p className="line-through text-[var(--color-gray)] text-[14px]">99000 сом</p>
+                                        <p className="text-[var(--color-blue)] font-bold md:text-[20px] ">100000 сом</p>
+                                        <p className="line-through text-[var(--color-gray)] text-[14px] md:text-[18px]">99000 сом</p>
                                     </div>
-                                    <Button className="bg-[var(--color-blue)] py-[14px] px-[52px] text-[14px] text-[var(--color-white)] rounded-[16px]">
+                                    <Button className="bg-[var(--color-blue)] py-[14px] px-[52px] text-[14px] md:text-[16px] text-[var(--color-white)] rounded-[16px]">
                                          Купить сейчас
                                     </Button>
                                 </div>
@@ -190,18 +221,18 @@ const  Details = () => {
 
             <div className='mt-[16px]'>
                 <Swiper
-                    spaceBetween={70}
+                    spaceBetween={space}
                     slidesPerView={1.5}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     {reviews.map(({image,name,date,time,comment},index) =>
-                        <SwiperSlide key = {index}>
+                        <SwiperSlide key = {index} >
                             <Card className='bg-[var(--color-gray-lighter)] w-[259px] md:w-[304px] rounded-[16px] shadow-none' >
                                 <CardBody className='p-[12px] md:py-[24px] md:px-[16px]'>
                                     <div className='flex'>
                                         <div className='flex gap-[8px]  items-center'>
-                                            <div className='w-[40px] h-[40px] rounded-full bg-[#D9D9D9]'>
+                                            <div className='w-[40px] h-[40px] md:w-[48px] md:h-[48px] md rounded-full bg-[#D9D9D9]'>
                                                 <img src = {image}/>
                                             </div>
                                             <div>
@@ -209,7 +240,7 @@ const  Details = () => {
                                                 <p className='text-[12px] text-[var(--color-gray)]'>{`${date}, ${time}`}</p>
                                             </div>
                                         </div>
-                                        <StarRating styles={`h-[16px] w-[16px]`}/>
+                                        <StarRating styles={`h-[16px] w-[16px] md:w-[20px] md:h-[20px]`}/>
                                     </div>
                                     <div className='text-[12px] md:text-[14px] mt-[8px] leading-[14px] md:leading-[16px]'>
                                         {comment}
