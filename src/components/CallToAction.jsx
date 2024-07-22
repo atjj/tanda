@@ -11,7 +11,7 @@ const CallToAction = () => {
   
     useEffect(() => {
       const handleScroll = () => {
-        if (window.scrollY > 600) {  // Укажите значение прокрутки, после которого блок должен появиться
+        if (window.scrollY > 600) { 
           setIsVisible(true);
         } else {
           setIsVisible(false);
